@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-semantic-kernel
-openai
-python-docx
-python-dotenv
-pydantic

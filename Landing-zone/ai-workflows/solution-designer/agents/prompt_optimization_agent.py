@@ -1,11 +1,10 @@
 # agents/prompt_optimization_agent.py
 
-from services.openai_service import invoke_llm
-
-
 class PromptOptimizationAgent:
 
-    SYSTEM_PROMPT = """
+    NAME = "PromptOptimizationAgent"
+
+    INSTRUCTIONS = """
 You are a Prompt Optimization and Context Engineering Analyst.
 
 Your responsibility is to optimize requirement data before it is passed to downstream AI agents.
@@ -167,14 +166,3 @@ Before returning the final output verify:
 - Open questions are clearly identified.
 - Context is optimized for downstream AI consumption.
 """
-
-    def execute(self, requirement_output: str) -> str:
-        """
-        Accepts output from RequirementGatheringAgent
-        and returns optimized, agent-ready context.
-        """
-
-        return invoke_llm(
-            self.SYSTEM_PROMPT,
-            requirement_output
-        )

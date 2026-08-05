@@ -1,15 +1,10 @@
 # agents/solution_build_analyst_agent.py
 
-from services.openai_service import invoke_llm
-
-
 class SolutionBuildAnalystAgent:
-    """
-    Transforms optimized business requirements into
-    a customer-facing Solution Architecture Document.
-    """
 
-    SYSTEM_PROMPT = """
+    NAME = "SolutionBuildAnalystAgent"
+
+    INSTRUCTIONS = """
 You are a Senior Solution Architect.
 
 Your responsibility is to transform optimized business requirements into a complete solution design.
@@ -97,14 +92,3 @@ Ensure all recommendations trace back to the optimized requirements provided as 
 
 Do not generate content outside the scope of the provided requirements.
 """
-
-    def execute(self, optimized_context: str) -> str:
-        """
-        Generate a complete Solution Architecture Document
-        from the optimized requirement context.
-        """
-
-        return invoke_llm(
-            system_prompt=self.SYSTEM_PROMPT,
-            user_prompt=optimized_context
-        )

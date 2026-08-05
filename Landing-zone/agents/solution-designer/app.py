@@ -5,27 +5,23 @@ def main():
 
     workflow = SolutionDesignerWorkflow()
 
-    request = """
-    Build a GenAI solution that can create
-    proposal responses from RFP documents.
-    """
+    user_request = input(
+        "Describe your business problem:\n\n"
+    )
 
-    result = workflow.execute(request)
+    result = workflow.execute(
+        user_request
+    )
 
-    print("\n============================")
-    print("REQUIREMENTS")
-    print("============================")
-    print(result["requirements"])
+    if result["status"] == "NEEDS_MORE_INFORMATION":
 
-    print("\n============================")
-    print("OPTIMIZED PROMPT")
-    print("============================")
-    print(result["optimized_prompt"])
+        print("\n=== FOLLOW-UP QUESTIONS ===\n")
+        print(result["output"])
 
-    print("\n============================")
-    print("SOLUTION DESIGN")
-    print("============================")
-    print(result["solution"])
+    else:
+
+        print("\n=== SOLUTION ARCHITECTURE DOCUMENT ===\n")
+        print(result["solution_document"])
 
 
 if __name__ == "__main__":

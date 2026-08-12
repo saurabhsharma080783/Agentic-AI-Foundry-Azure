@@ -1,4 +1,4 @@
-name: Deploy Foundry Hosted Agent
+name: Deploy Foundry Hosted Agent1
 
 on:
   workflow_dispatch:
